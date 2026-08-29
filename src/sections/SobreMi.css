@@ -1,0 +1,21 @@
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.sobre-mi-text p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  max-width: 750px;
+}

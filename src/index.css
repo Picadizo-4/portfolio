@@ -1,3 +1,6 @@
+@import './styles/variables.css';
+@import './styles/shared.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -5,5 +8,14 @@
 }
 
 body {
-  font-family: sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 var(--spacing-sm);
+  }
 }

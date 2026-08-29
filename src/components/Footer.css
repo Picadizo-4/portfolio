@@ -1,0 +1,10 @@
+.footer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}

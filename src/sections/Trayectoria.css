@@ -1,0 +1,61 @@
+.trayectoria-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.trayectoria-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--spacing-lg);
+  background-color: var(--color-surface-sunken);
+  border-radius: 16px;
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.trayectoria-periodo {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.trayectoria-empresa {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.trayectoria-rol {
+  font-size: 0.9rem;
+  color: var(--color-accent-blue);
+  margin-bottom: var(--spacing-sm);
+}
+
+.trayectoria-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-sm);
+}
+
+.trayectoria-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.trayectoria-tag {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 700px) {
+  .trayectoria-item {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,41 @@
+:root {
+  /* Colores base */
+  --color-bg: #FAF8F3;
+  --color-text-primary: #1A1A16;
+  --color-text-secondary: #5C5A52;
+  --color-border: #E4E0D5;
+
+  /* Acentos cartográficos */
+  --color-accent-green: #3D6B4F;
+  --color-accent-blue: #35586B;
+  --color-accent-earth: #B8895A;
+
+  /* Tipografía */
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Espaciado base */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* Color de fondo base y sombra de tarjeta */
+  --color-surface: #FFFFFF;
+  --shadow-card: 0 6px 20px rgba(26, 26, 22, 0.12);
+  --color-surface-sunken: #F0EDE4;
+}
+
+[data-theme="dark"] {
+  --color-bg: #14140F;
+  --color-text-primary: #F2F0E8;
+  --color-text-secondary: #A8A69C;
+  --color-border: #2E2E27;
+
+  --color-accent-green: #5C9973;
+  --color-accent-blue: #5C87A3;
+  --color-accent-earth: #D4A574;
+  --color-surface: #1E1E17;
+  --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --color-surface-sunken: #0E0E0A;
+}

@@ -1,0 +1,116 @@
+.navbar {
+  position: sticky;
+  top: var(--spacing-md);
+  z-index: 100;
+  max-width: 1400px;
+  margin: var(--spacing-md) auto;
+  background-color: var(--color-surface);
+  border-radius: 999px;
+  box-shadow: var(--shadow-card);
+}
+
+.navbar-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  gap: var(--spacing-lg);
+  list-style: none;
+}
+
+.navbar-links a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: var(--color-text-primary);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.navbar-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.navbar-button:hover {
+  border-color: var(--color-text-secondary);
+}
+
+.navbar-links a,
+.navbar-button {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .navbar-bar {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+}
+.navbar-cv-wrapper {
+  position: relative;
+}
+
+.navbar-cv-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  padding: 0.4rem;
+  z-index: 200;
+}
+
+.navbar-cv-dropdown a {
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-cv-dropdown a:hover {
+  background-color: var(--color-surface-sunken);
+}
