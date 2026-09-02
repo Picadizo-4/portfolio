@@ -7,6 +7,7 @@
   background-color: var(--color-surface);
   border-radius: 999px;
   box-shadow: var(--shadow-card);
+  overflow: hidden;
 }
 
 .navbar-bar {
@@ -113,4 +114,11 @@
 
 .navbar-cv-dropdown a:hover {
   background-color: var(--color-surface-sunken);
+}
+
+.navbar-progress {
+  height: 3px;
+  background-color: var(--color-accent-green);
+  border-radius: 0 0 999px 999px;
+  transition: width 0.1s ease-out;
 }

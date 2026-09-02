@@ -15,6 +15,7 @@ function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const [cvOpen, setCvOpen] = useState(false)
   const cvRef = useRef<HTMLDivElement>(null)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -24,6 +25,17 @@ function Navbar() {
     }
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  useEffect(() => {
+    function handleScroll() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+      setScrollProgress(progress)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
@@ -49,10 +61,10 @@ function Navbar() {
             </button>
             {cvOpen && (
               <div className="navbar-cv-dropdown">
-                <a href="/cv-MiguelAngelOrdonezPicadizo-es.pdf" download onClick={() => setCvOpen(false)}>
+                <a href="/cv-es.pdf" download onClick={() => setCvOpen(false)}>
                   Español
                 </a>
-                <a href="/cv-MiguelAngelOrdonezPicadizo-en.pdf" download onClick={() => setCvOpen(false)}>
+                <a href="/cv-en.pdf" download onClick={() => setCvOpen(false)}>
                   English
                 </a>
               </div>
@@ -64,6 +76,7 @@ function Navbar() {
           </button>
         </div>
       </div>
+      <div className="navbar-progress" style={{ width: `${scrollProgress}%` }} />
     </nav>
   )
 }
