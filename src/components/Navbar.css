@@ -118,7 +118,9 @@
 
 .navbar-progress {
   height: 3px;
+  width: 100%;
   background-color: var(--color-accent-green);
-  border-radius: 0 0 999px 999px;
-  transition: width 0.1s ease-out;
+  transform-origin: left;
+  transform: scaleX(0);
+  will-change: transform;
 }
