@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './Skills.css'
+import ExerciseModal from '../components/ExerciseModal'
+import { ejerciciosPorSkill } from '../data/exercises'
 
 const skillCategories = [
   {
@@ -18,6 +20,7 @@ const skillCategories = [
     skills: [
       { name: 'MVVM', desc: 'Patrón que separa interfaz, lógica y datos para un código más mantenible.' },
       { name: 'Lógica asíncrona', desc: 'Manejo de tareas que se ejecutan sin bloquear el resto de la aplicación.' },
+      { name: 'POO', desc: 'Programación orientada a objetos — organizar el código en clases y objetos que modelan el dominio del problema.' },
     ],
   },
   {
@@ -27,7 +30,8 @@ const skillCategories = [
       { name: 'Firebase', desc: 'Backend as a service de Google, usado en PanGeo para datos y autenticación.' },
       { name: 'NoSQL', desc: 'Bases de datos no relacionales, flexibles para datos poco estructurados.' },
       { name: 'JSON', desc: 'Formato estándar para intercambiar datos entre sistemas.' },
-      { name: 'GeoJSON', desc: 'Formato estándar para bases de datos geoespaciales.' },
+      { name: 'SVG', desc: 'Formato de gráficos vectoriales, usado en PanGeo para los mapas interactivos.' },
+      { name: 'Bases de datos', desc: 'Diseño y gestión de almacenamiento de datos, relacional y no relacional.' },
     ],
   },
   {
@@ -37,12 +41,15 @@ const skillCategories = [
       { name: 'Git', desc: 'Control de versiones — el historial y la columna vertebral de este mismo proyecto.' },
       { name: 'Docker', desc: 'Empaqueta aplicaciones en contenedores para que funcionen igual en cualquier entorno.' },
       { name: 'Figma', desc: 'Herramienta de diseño de interfaces usada para prototipar antes de programar.' },
+      { name: 'Jetpack Compose', desc: 'Toolkit moderno de Android para construir interfaces de forma declarativa, usado en PanGeo.' },
+      { name: 'Inteligencia Artificial', desc: 'Exploración de herramientas y modelos de IA aplicados al desarrollo de software.' },
     ],
   },
 ]
 
 function Skills() {
   const [activeSkill, setActiveSkill] = useState<string | null>(null)
+  const [skillEnEjercicio, setSkillEnEjercicio] = useState<string | null>(null)
 
   const handleClick = (key: string) => {
     setActiveSkill(prev => (prev === key ? null : key))
@@ -62,6 +69,7 @@ function Skills() {
               {category.skills.map(skill => {
                 const key = `${category.title}-${skill.name}`
                 const isActive = activeSkill === key
+                const tieneEjercicios = !!ejerciciosPorSkill[skill.name]
                 return (
                   <div key={key} className="skill-item">
                     <button
@@ -70,7 +78,16 @@ function Skills() {
                     >
                       {skill.name}
                     </button>
-                    {isActive && <p className="skill-desc">{skill.desc}</p>}
+                    {isActive && (
+                      <div className="skill-detail">
+                        <p className="skill-desc">{skill.desc}</p>
+                        {tieneEjercicios && (
+                          <button className="skill-exercise-link" onClick={() => setSkillEnEjercicio(skill.name)}>
+                          Pon a prueba tu nivel →
+                          </button>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )
               })}
@@ -78,6 +95,14 @@ function Skills() {
           </div>
         ))}
       </div>
+
+      {skillEnEjercicio && (
+        <ExerciseModal
+          skillName={skillEnEjercicio}
+          ejercicios={ejerciciosPorSkill[skillEnEjercicio]}
+          onClose={() => setSkillEnEjercicio(null)}
+        />
+      )}
     </section>
   )
 }

@@ -8,7 +8,7 @@ function Hero() {
         <p className="hero-eyebrow">Portfolio en proceso...</p>
         <h1 className="hero-title">Miguel Ángel Ordóñez Picadizo</h1>
         <p className="hero-subtitle">
-          Construyo software con base sólida, aprendizaje constante y ganas de crecer.
+          Construyo software, aprendizaje constante y ganas de crecer.
         </p>
         <p className="hero-description">
           Desarrollador junior con experiencia en proyectos personales.
