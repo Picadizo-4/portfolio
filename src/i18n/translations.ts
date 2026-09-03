@@ -94,6 +94,13 @@ export const translations = {
     formacion: {
       eyebrow: '04 — education.json',
       titulo: 'Formación',
+      levelup: {
+        titulo: '¡Nivel 1 completado!',
+        sub: 'Administración y Finanzas',
+      },
+      ticker: {
+        completado: 'Grado completado',
+      },
       items: [
         { titulo: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma', centro: 'Universidad Europea, Madrid', periodo: '2024 — 2026' },
         { titulo: 'Grado en Finanzas y Contabilidad', centro: 'Universidad de Cádiz', periodo: '2020 — 2022' },
@@ -234,6 +241,13 @@ export const translations = {
     formacion: {
       eyebrow: '04 — education.json',
       titulo: 'Education',
+      levelup: {
+        titulo: 'Level 1 complete!',
+        sub: 'Business Administration and Finance',
+      },
+      ticker: {
+        completado: 'Degree completed',
+      },
       items: [
         { titulo: 'Higher Technician in Multiplatform Application Development', centro: 'Universidad Europea, Madrid', periodo: '2024 — 2026' },
         { titulo: 'Degree in Finance and Accounting', centro: 'Universidad de Cádiz', periodo: '2020 — 2022' },

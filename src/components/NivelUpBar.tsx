@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import { useLanguage } from '../hooks/useLanguage'
 
 function NivelUpBar() {
+  const { t } = useLanguage()
   const [xp, setXp] = useState(0)
 
   useEffect(() => {
@@ -21,8 +23,8 @@ function NivelUpBar() {
     <>
       <div className="formacion-fill" style={{ width: `${xp}%` }} />
       <div className="formacion-levelup-text">
-        <p className="formacion-levelup-titulo">¡Nivel 1 completado!</p>
-        <p className="formacion-levelup-sub">Administración y Finanzas</p>
+        <p className="formacion-levelup-titulo">{t.formacion.levelup.titulo}</p>
+        <p className="formacion-levelup-sub">{t.formacion.levelup.sub}</p>
         <p className="formacion-levelup-xp">{xp} / 100 XP</p>
       </div>
     </>

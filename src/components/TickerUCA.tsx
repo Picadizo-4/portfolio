@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import { useLanguage } from '../hooks/useLanguage'
 
 function TickerUCA() {
+  const { t } = useLanguage()
   const [precio, setPrecio] = useState(21.2)
   const [fase, setFase] = useState<'fluctuando' | 'asentado' | 'saliendo'>('fluctuando')
 
@@ -30,7 +32,7 @@ function TickerUCA() {
       <span className="formacion-ticker-nombre">UCA</span>
       <span className="formacion-ticker-precio">{precio.toFixed(2)}</span>
       <span className="formacion-ticker-flecha">
-        {fase === 'fluctuando' ? '▲' : '▲ Grado completado'}
+        {fase === 'fluctuando' ? '▲' : `▲ ${t.formacion.ticker.completado}`}
       </span>
     </div>
   )
