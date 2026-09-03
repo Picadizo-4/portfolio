@@ -1,25 +1,10 @@
 import { useState } from 'react'
 import './Trayectoria.css'
 import furgonetaImg from '../assets/furgoneta-dhl.png'
-
-const experiencias = [
-  {
-    periodo: 'Ene 2026 — May 2026',
-    empresa: 'SweetCode',
-    rol: 'Desarrollador en prácticas',
-    descripcion: 'Desarrollo y personalización de funcionalidades mediante código, resolución de incidencias técnicas en entornos de producción y automatización de flujos de trabajo internos.',
-    tags: ['Desarrollo', 'Producción', 'Automatización'],
-  },
-  {
-    periodo: '2023 — 2024',
-    empresa: 'Deutsche Post / DHL',
-    rol: 'Operador logístico internacional · Wertheim am Main, Alemania',
-    descripcion: 'Integración en entornos laborales multiculturales, gestión de documentación sensible y diseño de rutas para maximizar eficiencia y reducir tiempos.',
-    tags: ['Internacional', 'Procesos', 'Adaptabilidad'],
-  },
-]
+import { useLanguage } from '../hooks/useLanguage'
 
 function Trayectoria() {
+  const { t } = useLanguage()
   const [furgonetaActiva, setFurgonetaActiva] = useState(false)
 
   const lanzarFurgoneta = () => {
@@ -30,11 +15,11 @@ function Trayectoria() {
 
   return (
     <section id="trayectoria" className="section-card">
-      <p className="section-eyebrow">03 — experience.log</p>
-      <h2 className="section-title">Trayectoria</h2>
+      <p className="section-eyebrow">{t.trayectoria.eyebrow}</p>
+      <h2 className="section-title">{t.trayectoria.titulo}</h2>
 
       <div className="trayectoria-list">
-        {experiencias.map(exp => {
+        {t.trayectoria.items.map(exp => {
           const esDHL = exp.empresa === 'Deutsche Post / DHL'
           return (
             <div

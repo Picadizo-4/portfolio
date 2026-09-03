@@ -1,21 +1,23 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTheme } from '../hooks/useTheme'
+import { useLanguage } from '../hooks/useLanguage'
 import './Navbar.css'
-
-const sections = [
-  { id: 'sobre-mi', label: 'Sobre mí' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'trayectoria', label: 'Trayectoria' },
-  { id: 'formacion', label: 'Formación' },
-  { id: 'proyectos', label: 'Proyectos' },
-  { id: 'contacto', label: 'Contacto' },
-]
 
 function Navbar() {
   const { theme, toggleTheme } = useTheme()
+  const { lang, toggleLang, t } = useLanguage()
   const [cvOpen, setCvOpen] = useState(false)
   const cvRef = useRef<HTMLDivElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
+
+  const sections = [
+    { id: 'sobre-mi', label: t.nav.sobreMi },
+    { id: 'skills', label: t.nav.skills },
+    { id: 'trayectoria', label: t.nav.trayectoria },
+    { id: 'formacion', label: t.nav.formacion },
+    { id: 'proyectos', label: t.nav.proyectos },
+    { id: 'contacto', label: t.nav.contacto },
+  ]
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -78,7 +80,9 @@ function Navbar() {
               </div>
             )}
           </div>
-          <button className="navbar-button">EN</button>
+          <button className="navbar-button" onClick={toggleLang}>
+            {lang === 'es' ? 'EN' : 'ES'}
+          </button>
           <button className="navbar-button" onClick={toggleTheme}>
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
@@ -88,8 +92,6 @@ function Navbar() {
       <div className="navbar-progress-track">
         <div className="navbar-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
       </div>
-
-      
     </nav>
   )
 }
