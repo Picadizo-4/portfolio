@@ -5,7 +5,7 @@ interface MatrixRainProps {
   mensaje?: string
 }
 
-function MatrixRain({ mensaje = 'HAS ENCONTRADO UN EASTER EGG\n\nMIGUEL ANGEL ORDOÑEZ PICADIZO\nSOFTWARE DEVELOPER\n\n\n\nhabrá alguna sorpresa más?' }: MatrixRainProps) {
+function MatrixRain({ mensaje = 'HAS ENCONTRADO UN EASTER EGG\n\nMIGUEL ANGEL ORDOÑEZ PICADIZO\nSOFTWARE DEVELOPER\n\n\n\nsiga buscando...' }: MatrixRainProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [textoVisible, setTextoVisible] = useState('')
 
