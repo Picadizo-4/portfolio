@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './GameOverlay.css'
+import { useLanguage } from '../hooks/useLanguage'
 
 interface GameOverlayProps {
   onClose: () => void
@@ -14,10 +15,13 @@ interface Item {
 const SIMBOLOS = ['{ }', '</>', '=>', 'npm', 'git', '01', 'if', 'for', 'null', '<div>']
 
 function GameOverlay({ onClose }: GameOverlayProps) {
+  const { t } = useLanguage()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [estado, setEstado] = useState<'jugando' | 'perdido'>('jugando')
   const [score, setScore] = useState(0)
   const scoreRef = useRef(0)
+  const scoreLabelRef = useRef(t.easterEggs.juego.score)
+  scoreLabelRef.current = t.easterEggs.juego.score
 
   const [mejorScore, setMejorScore] = useState(() => Number(localStorage.getItem('bestScore') || '0'))
 
@@ -117,7 +121,7 @@ function GameOverlay({ onClose }: GameOverlayProps) {
       ctx.fillStyle = '#F2F0E8'
       ctx.font = '18px monospace'
       ctx.textAlign = 'left'
-      ctx.fillText(`Score: ${scoreRef.current}`, 24, 40)
+      ctx.fillText(`${scoreLabelRef.current}: ${scoreRef.current}`, 24, 40)
 
       if (perdido) {
         setEstado('perdido')
@@ -148,18 +152,18 @@ function GameOverlay({ onClose }: GameOverlayProps) {
         <>
           <canvas ref={canvasRef} className="game-canvas" />
           <button className="game-close" onClick={onClose} aria-label="Cerrar">×</button>
-          <p className="game-instrucciones">← → o A / D para moverte</p>
+          <p className="game-instrucciones">{t.easterEggs.juego.instrucciones}</p>
         </>
       )}
 
       {estado === 'perdido' && (
         <div className="game-over">
-          <p className="game-over-titulo">ERROR_FATAL</p>
-          <p className="game-over-score">Puntuación: {score}</p>
-          <p className="game-over-score">Mejor puntuación: {mejorScore}</p>
+          <p className="game-over-titulo">{t.easterEggs.juego.errorFatal}</p>
+          <p className="game-over-score">{t.easterEggs.juego.puntuacion}: {score}</p>
+          <p className="game-over-score">{t.easterEggs.juego.mejorPuntuacion}: {mejorScore}</p>
           <div className="game-over-actions">
-            <button className="game-btn game-btn-primary" onClick={reintentar}>Reintentar</button>
-            <button className="game-btn" onClick={onClose}>Cerrar</button>
+            <button className="game-btn game-btn-primary" onClick={reintentar}>{t.easterEggs.juego.reintentar}</button>
+            <button className="game-btn" onClick={onClose}>{t.easterEggs.juego.cerrar}</button>
           </div>
         </div>
       )}

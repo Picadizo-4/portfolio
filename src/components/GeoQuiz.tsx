@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './GeoQuiz.css'
 import { PAISES } from '../data/countries'
+import { useLanguage } from '../hooks/useLanguage'
 
 interface GeoQuizProps {
   onClose: () => void
@@ -16,22 +17,24 @@ function barajar<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5)
 }
 
-function generarPreguntas(cantidad: number): Pregunta[] {
+function generarPreguntas(cantidad: number, esIngles: boolean): Pregunta[] {
   const elegidos = barajar(PAISES).slice(0, cantidad)
   return elegidos.map(pais => {
+    const nombreCorrecto = esIngles ? pais.nombreEn : pais.nombre
     const distractores = barajar(PAISES.filter(p => p.nombre !== pais.nombre))
       .slice(0, 3)
-      .map(p => p.nombre)
+      .map(p => (esIngles ? p.nombreEn : p.nombre))
     return {
-      nombre: pais.nombre,
+      nombre: nombreCorrecto,
       bandera: pais.bandera,
-      opciones: barajar([pais.nombre, ...distractores]),
+      opciones: barajar([nombreCorrecto, ...distractores]),
     }
   })
 }
 
 function GeoQuiz({ onClose }: GeoQuizProps) {
-  const [preguntas] = useState(() => generarPreguntas(8))
+  const { t, lang } = useLanguage()
+  const [preguntas] = useState(() => generarPreguntas(8, lang === 'en'))
   const [indice, setIndice] = useState(0)
   const [score, setScore] = useState(0)
   const [seleccion, setSeleccion] = useState<string | null>(null)
@@ -58,8 +61,8 @@ function GeoQuiz({ onClose }: GeoQuizProps) {
     return (
       <div className="geoquiz-overlay" onClick={onClose}>
         <div className="geoquiz-window" onClick={e => e.stopPropagation()}>
-          <p className="geoquiz-final">Acertaste {score} de {preguntas.length} países</p>
-          <button className="geoquiz-btn geoquiz-btn-primary" onClick={onClose}>Cerrar</button>
+          <p className="geoquiz-final">{t.easterEggs.geoquiz.acertaste(score, preguntas.length)}</p>
+          <button className="geoquiz-btn geoquiz-btn-primary" onClick={onClose}>{t.easterEggs.geoquiz.cerrar}</button>
         </div>
       </div>
     )
@@ -69,7 +72,7 @@ function GeoQuiz({ onClose }: GeoQuizProps) {
     <div className="geoquiz-overlay" onClick={onClose}>
       <div className="geoquiz-window" onClick={e => e.stopPropagation()}>
         <div className="geoquiz-header">
-          <span>País {indice + 1} / {preguntas.length}</span>
+          <span>{t.easterEggs.geoquiz.pais} {indice + 1} / {preguntas.length}</span>
           <button className="geoquiz-close" onClick={onClose} aria-label="Cerrar">×</button>
         </div>
 

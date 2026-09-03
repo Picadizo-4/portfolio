@@ -1,5 +1,6 @@
 import './EasterEgg.css'
 import { useEasterEgg } from '../hooks/useEasterEgg'
+import { useLanguage } from '../hooks/useLanguage'
 import MatrixRain from './MatrixRain'
 import GameOverlay from './GameOverlay'
 import DevHelper from './DevHelper'
@@ -8,6 +9,7 @@ import CursorFollower from './CursorFollower'
 import GeoQuiz from './GeoQuiz'
 
 function EasterEgg() {
+  const { t } = useLanguage()
   const {
     toast,
     matrixActivo,
@@ -23,7 +25,7 @@ function EasterEgg() {
 
   return (
     <>
-      {matrixActivo && <MatrixRain />}
+      {matrixActivo && <MatrixRain mensaje={t.easterEggs.matrixMensaje} />}
       {juegoActivo && <GameOverlay onClose={() => setJuegoActivo(false)} />}
       {consejoActivo && <DevHelper mensaje={consejoActivo} />}
       {terminalActivo && <TerminalOverlay onClose={() => setTerminalActivo(false)} />}

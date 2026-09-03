@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import './Skills.css'
 import ExerciseModal from '../components/ExerciseModal'
-import { ejerciciosPorSkill } from '../data/exercises'
+import { getEjerciciosPorSkill } from '../data/exercises'
 import { useLanguage } from '../hooks/useLanguage'
 
 function Skills() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+  const ejerciciosPorSkill = getEjerciciosPorSkill(lang)
   const [activeSkill, setActiveSkill] = useState<string | null>(null)
-  const [skillEnEjercicio, setSkillEnEjercicio] = useState<string | null>(null)
+  const [skillEnEjercicio, setSkillEnEjercicio] = useState<{ id: string; name: string } | null>(null)
 
   const handleClick = (key: string) => {
     setActiveSkill(prev => (prev === key ? null : key))
@@ -25,9 +26,9 @@ function Skills() {
             <p className="skills-category-desc">{category.description}</p>
             <div className="skills-pills">
               {category.skills.map(skill => {
-                const key = `${category.title}-${skill.name}`
+                const key = `${category.title}-${skill.id}`
                 const isActive = activeSkill === key
-                const tieneEjercicios = !!ejerciciosPorSkill[skill.name]
+                const tieneEjercicios = !!ejerciciosPorSkill[skill.id]
                 return (
                   <div key={key} className="skill-item">
                     <button
@@ -40,7 +41,10 @@ function Skills() {
                       <div className="skill-detail">
                         <p className="skill-desc">{skill.desc}</p>
                         {tieneEjercicios && (
-                          <button className="skill-exercise-link" onClick={() => setSkillEnEjercicio(skill.name)}>
+                          <button
+                            className="skill-exercise-link"
+                            onClick={() => setSkillEnEjercicio({ id: skill.id, name: skill.name })}
+                          >
                             {t.skills.probarNivel}
                           </button>
                         )}
@@ -56,8 +60,8 @@ function Skills() {
 
       {skillEnEjercicio && (
         <ExerciseModal
-          skillName={skillEnEjercicio}
-          ejercicios={ejerciciosPorSkill[skillEnEjercicio]}
+          skillName={skillEnEjercicio.name}
+          ejercicios={ejerciciosPorSkill[skillEnEjercicio.id]}
           onClose={() => setSkillEnEjercicio(null)}
         />
       )}

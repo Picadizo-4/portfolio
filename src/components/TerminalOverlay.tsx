@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './TerminalOverlay.css'
+import { useLanguage } from '../hooks/useLanguage'
 
 interface TerminalOverlayProps {
   onClose: () => void
@@ -11,8 +12,9 @@ interface Linea {
 }
 
 function TerminalOverlay({ onClose }: TerminalOverlayProps) {
+  const { t, lang } = useLanguage()
   const [lineas, setLineas] = useState<Linea[]>([
-    { tipo: 'output', texto: 'Terminal de miguelpicadizo.com — escribe "help" para ver comandos.' },
+    { tipo: 'output', texto: t.easterEggs.terminal.bienvenida },
   ])
   const [valor, setValor] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -29,23 +31,26 @@ function TerminalOverlay({ onClose }: TerminalOverlayProps) {
   const ejecutar = (comando: string) => {
     const cmd = comando.trim().toLowerCase()
     let salida = ''
+    const term = t.easterEggs.terminal
 
     switch (cmd) {
       case 'help':
-        salida = 'Comandos: whoami, ls, cv, help, clear, exit'
+        salida = term.help
         break
       case 'whoami':
-        salida = 'Miguel Ángel Ordóñez Picadizo — desarrollador de software junior, apasionado por la geografía.'
+        salida = term.whoami
         break
       case 'ls':
-        salida = 'sobre-mi  skills  trayectoria  formacion  proyectos  contacto'
+        salida = term.ls
         break
       case 'cv': {
         const link = document.createElement('a')
-        link.href = '/cv-MiguelAngelOrdonezPicadizo-es.pdf'
+        link.href = lang === 'en'
+          ? '/cv-MiguelAngelOrdonezPicadizo-en.pdf'
+          : '/cv-MiguelAngelOrdonezPicadizo-es.pdf'
         link.download = ''
         link.click()
-        salida = 'Descargando CV...'
+        salida = term.cv
         break
       }
       case 'clear':

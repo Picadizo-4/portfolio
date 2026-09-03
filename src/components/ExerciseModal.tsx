@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import './ExerciseModal.css'
 import type { Ejercicio } from '../data/exercises'
+import { useLanguage } from '../hooks/useLanguage'
 
 interface ExerciseModalProps {
   skillName: string
@@ -19,6 +20,8 @@ function normalizar(texto: string) {
 }
 
 function ExerciseModal({ skillName, ejercicios, onClose }: ExerciseModalProps) {
+  const { t } = useLanguage()
+  const m = t.skills.modal
   const [indice, setIndice] = useState(0)
   const [respuesta, setRespuesta] = useState('')
   const [estado, setEstado] = useState<'respondiendo' | 'correcto' | 'incorrecto' | 'solucion' | 'completado'>('respondiendo')
@@ -46,8 +49,8 @@ function ExerciseModal({ skillName, ejercicios, onClose }: ExerciseModalProps) {
     return createPortal(
       <div className="modal-overlay" onClick={onClose}>
         <div className="exercise-modal" onClick={e => e.stopPropagation()}>
-          <p className="exercise-completado">Has completado los ejercicios de {skillName}</p>
-          <button className="exercise-btn exercise-btn-primary exercise-completado-btn" onClick={onClose}>Cerrar</button>
+          <p className="exercise-completado">{m.completado(skillName)}</p>
+          <button className="exercise-btn exercise-btn-primary exercise-completado-btn" onClick={onClose}>{m.cerrar}</button>
         </div>
       </div>,
       document.body
@@ -58,7 +61,7 @@ function ExerciseModal({ skillName, ejercicios, onClose }: ExerciseModalProps) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="exercise-modal" onClick={e => e.stopPropagation()}>
         <div className="exercise-header">
-          <span className="exercise-title">Ejercicio · {skillName}</span>
+          <span className="exercise-title">{m.ejercicio} · {skillName}</span>
           <button className="exercise-close" onClick={onClose} aria-label="Cerrar">×</button>
         </div>
 
@@ -80,26 +83,26 @@ function ExerciseModal({ skillName, ejercicios, onClose }: ExerciseModalProps) {
             className="exercise-input"
             value={respuesta}
             onChange={e => setRespuesta(e.target.value)}
-            placeholder="escribe tu respuesta"
+            placeholder={m.placeholder}
             rows={ejercicioActual.tipo === 'escritura' ? 3 : 1}
           />
         </div>
 
-        {estado === 'correcto' && <p className="exercise-feedback exercise-feedback-ok">Correcto</p>}
-        {estado === 'incorrecto' && <p className="exercise-feedback exercise-feedback-error">No es correcto, inténtalo de nuevo</p>}
+        {estado === 'correcto' && <p className="exercise-feedback exercise-feedback-ok">{m.correcto}</p>}
+        {estado === 'incorrecto' && <p className="exercise-feedback exercise-feedback-error">{m.incorrecto}</p>}
         {estado === 'solucion' && (
-          <p className="exercise-feedback exercise-feedback-solucion">Solución: {ejercicioActual.respuestas[0]}</p>
+          <p className="exercise-feedback exercise-feedback-solucion">{m.solucion}: {ejercicioActual.respuestas[0]}</p>
         )}
 
         <div className="exercise-actions">
-          <button className="exercise-btn" onClick={() => setEstado('solucion')}>Ver solución</button>
-          <button className="exercise-btn" onClick={avanzar}>Saltar</button>
+          <button className="exercise-btn" onClick={() => setEstado('solucion')}>{m.verSolucion}</button>
+          <button className="exercise-btn" onClick={avanzar}>{m.saltar}</button>
           {estado === 'correcto' ? (
             <button className="exercise-btn exercise-btn-primary" onClick={avanzar}>
-              {esUltimo ? 'Finalizar' : 'Siguiente →'}
+              {esUltimo ? m.finalizar : m.siguiente}
             </button>
           ) : (
-            <button className="exercise-btn exercise-btn-primary" onClick={comprobar}>Comprobar</button>
+            <button className="exercise-btn exercise-btn-primary" onClick={comprobar}>{m.comprobar}</button>
           )}
         </div>
       </div>
