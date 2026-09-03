@@ -20,6 +20,7 @@ function Hero() {
       </div>
       <div className="hero-foto-wrapper">
         <img src={fotoPerfil} alt="Miguel Ángel Ordóñez Picadizo" className="hero-foto" />
+        <div className="hero-foto-terminal" aria-hidden="true">&gt;_</div>
       </div>
     </section>
   )

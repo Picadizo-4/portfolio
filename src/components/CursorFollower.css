@@ -1,0 +1,10 @@
+.cursor-follower {
+  position: fixed;
+  z-index: 5000;
+  transform: translate(-4px, -14px);
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--color-accent-green);
+  pointer-events: none;
+}

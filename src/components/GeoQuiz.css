@@ -1,0 +1,100 @@
+.geoquiz-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.geoquiz-window {
+  width: 100%;
+  max-width: 560px;
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.geoquiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-body);
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.geoquiz-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.geoquiz-bandera {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin: 0 auto var(--spacing-lg);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+}
+
+.geoquiz-opciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.geoquiz-opcion {
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.geoquiz-correcta {
+  border-color: var(--color-accent-green);
+  background-color: var(--color-accent-green);
+  color: var(--color-bg);
+}
+
+.geoquiz-incorrecta {
+  border-color: #c05050;
+  background-color: #c05050;
+  color: #fff;
+}
+
+.geoquiz-final {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.geoquiz-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.geoquiz-btn-primary {
+  background-color: var(--color-accent-green);
+  color: var(--color-bg);
+  border: none;
+}

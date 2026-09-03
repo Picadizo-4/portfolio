@@ -1,0 +1,81 @@
+.terminal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 640px;
+  height: 420px;
+  background-color: #0a0f0a;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background-color: #14140F;
+  color: #A8A69C;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+.terminal-close {
+  background: none;
+  border: none;
+  color: #A8A69C;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.terminal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.terminal-line-input {
+  color: #F2F0E8;
+  margin-bottom: 4px;
+}
+
+.terminal-line-output {
+  color: #33ff66;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
+
+.terminal-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-prompt {
+  color: #33ff66;
+}
+
+.terminal-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #F2F0E8;
+  font-family: monospace;
+  font-size: 0.85rem;
+}

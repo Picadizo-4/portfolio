@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import './ExerciseModal.css'
 import type { Ejercicio } from '../data/exercises'
 
@@ -42,17 +43,18 @@ function ExerciseModal({ skillName, ejercicios, onClose }: ExerciseModalProps) {
   }
 
   if (estado === 'completado') {
-    return (
+    return createPortal(
       <div className="modal-overlay" onClick={onClose}>
         <div className="exercise-modal" onClick={e => e.stopPropagation()}>
           <p className="exercise-completado">Has completado los ejercicios de {skillName}</p>
           <button className="exercise-btn exercise-btn-primary exercise-completado-btn" onClick={onClose}>Cerrar</button>
         </div>
-      </div>
+      </div>,
+      document.body
     )
   }
 
-  return (
+  return createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div className="exercise-modal" onClick={e => e.stopPropagation()}>
         <div className="exercise-header">
@@ -101,7 +103,8 @@ function ExerciseModal({ skillName, ejercicios, onClose }: ExerciseModalProps) {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 

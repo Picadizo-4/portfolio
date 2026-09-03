@@ -59,3 +59,31 @@
     grid-template-columns: 1fr;
   }
 }
+
+.trayectoria-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.trayectoria-clickable {
+  cursor: pointer;
+}
+
+.furgoneta-dhl {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  height: 180px;
+  width: auto;
+  animation: furgoneta-cruzar 2.5s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes furgoneta-cruzar {
+  from {
+    transform: translateX(-120px);
+  }
+  to {
+    transform: translateX(calc(100vw));
+  }
+}

@@ -7,7 +7,6 @@
   background-color: var(--color-surface);
   border-radius: 999px;
   box-shadow: var(--shadow-card);
-  overflow: hidden;
 }
 
 .navbar-bar {
@@ -74,16 +73,6 @@
   white-space: nowrap;
 }
 
-@media (max-width: 900px) {
-  .navbar-bar {
-    padding: var(--spacing-sm) var(--spacing-md);
-  }
-
-  .navbar-links {
-    display: none;
-  }
-
-}
 .navbar-cv-wrapper {
   position: relative;
 }
@@ -116,11 +105,28 @@
   background-color: var(--color-surface-sunken);
 }
 
-.navbar-progress {
+.navbar-progress-track {
   height: 3px;
+  overflow: hidden;
+  border-radius: 0 0 999px 999px;
+  width: 98%;
+  margin: 0 auto;
+}
+.navbar-progress {
+  height: 100%;
   width: 100%;
   background-color: var(--color-accent-green);
   transform-origin: left;
   transform: scaleX(0);
   will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .navbar-bar {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .navbar-links {
+    display: none;
+  }
 }

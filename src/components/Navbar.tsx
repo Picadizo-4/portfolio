@@ -27,27 +27,27 @@ function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-useEffect(() => {
-  let ticking = false
+  useEffect(() => {
+    let ticking = false
 
-  function updateProgress() {
-    const scrollTop = window.scrollY
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight
-    const progress = docHeight > 0 ? scrollTop / docHeight : 0
-    setScrollProgress(progress)
-    ticking = false
-  }
-
-  function handleScroll() {
-    if (!ticking) {
-      requestAnimationFrame(updateProgress)
-      ticking = true
+    function updateProgress() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? scrollTop / docHeight : 0
+      setScrollProgress(progress)
+      ticking = false
     }
-  }
 
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  return () => window.removeEventListener('scroll', handleScroll)
-}, [])
+    function handleScroll() {
+      if (!ticking) {
+        requestAnimationFrame(updateProgress)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <nav className="navbar">
@@ -64,18 +64,15 @@ useEffect(() => {
 
         <div className="navbar-actions">
           <div className="navbar-cv-wrapper" ref={cvRef}>
-            <button
-              className="navbar-button"
-              onClick={() => setCvOpen(!cvOpen)}
-            >
+            <button className="navbar-button" onClick={() => setCvOpen(!cvOpen)}>
               CV ↓
             </button>
             {cvOpen && (
               <div className="navbar-cv-dropdown">
-                <a href="/cv-es.pdf" download onClick={() => setCvOpen(false)}>
+                <a href="/cv-MiguelAngelOrdonezPicadizo-es.pdf" download onClick={() => setCvOpen(false)}>
                   Español
                 </a>
-                <a href="/cv-en.pdf" download onClick={() => setCvOpen(false)}>
+                <a href="/cv-MiguelAngelOrdonezPicadizo-en.pdf" download onClick={() => setCvOpen(false)}>
                   English
                 </a>
               </div>
@@ -87,7 +84,12 @@ useEffect(() => {
           </button>
         </div>
       </div>
-      <div className="navbar-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
+
+      <div className="navbar-progress-track">
+        <div className="navbar-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
+      </div>
+
+      
     </nav>
   )
 }

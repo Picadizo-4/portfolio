@@ -39,3 +39,35 @@
   --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.45);
   --color-surface-sunken: #0E0E0A;
 }
+
+body.terminal-mode {
+  --color-bg: #0a0f0a;
+  --color-surface: #0f150f;
+  --color-surface-sunken: #060a06;
+  --color-text-primary: #33ff66;
+  --color-text-secondary: #22a347;
+  --color-border: #1a3320;
+  --color-accent-green: #33ff66;
+  --color-accent-blue: #33ff66;
+  --color-accent-earth: #33ff66;
+  --font-heading: monospace;
+  --font-body: monospace;
+}
+
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+@keyframes glitch-shake {
+  0% { transform: translate(0); filter: hue-rotate(0deg); }
+  20% { transform: translate(-4px, 2px); filter: hue-rotate(90deg); }
+  40% { transform: translate(4px, -2px); filter: hue-rotate(180deg); }
+  60% { transform: translate(-3px, -2px); filter: hue-rotate(270deg); }
+  80% { transform: translate(3px, 2px); filter: hue-rotate(320deg); }
+  100% { transform: translate(0); filter: hue-rotate(0deg); }
+}
+
+body.glitch-active {
+  animation: glitch-shake 0.7s steps(2, end);
+}

@@ -1,0 +1,84 @@
+.game-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  background-color: #14140F;
+}
+
+.game-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.game-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #F2F0E8;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 4001;
+}
+
+.game-instrucciones {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: monospace;
+  color: #A8A69C;
+  font-size: 0.9rem;
+  z-index: 4001;
+}
+
+.game-over {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.game-over-titulo {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #c05050;
+  text-shadow: 0 0 16px rgba(192, 80, 80, 0.6);
+  letter-spacing: 2px;
+}
+
+.game-over-score {
+  font-family: monospace;
+  color: #F2F0E8;
+  font-size: 1.1rem;
+}
+
+.game-over-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.game-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid #3a3934;
+  background: transparent;
+  color: #F2F0E8;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.game-btn-primary {
+  background-color: #5C9973;
+  color: #14140F;
+  border: none;
+}

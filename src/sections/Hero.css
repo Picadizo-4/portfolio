@@ -89,3 +89,36 @@
     flex-wrap: wrap;
   }
 }
+
+.hero-foto-wrapper {
+  position: relative;
+}
+
+.hero-foto-terminal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 320px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  background-color: #0a0f0a;
+  color: #33ff66;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 8.5rem;
+  animation: terminal-blink 1.2s step-end infinite;
+}
+
+body.terminal-mode .hero-foto {
+  display: none;
+}
+
+body.terminal-mode .hero-foto-terminal {
+  display: flex;
+}
+
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
