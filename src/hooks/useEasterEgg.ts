@@ -82,7 +82,7 @@ export function useEasterEgg() {
             case 'matrix': {
               activarMatrix()
               break
-            }            
+            }
             case 'play': {
               setJuegoActivo(true)
               break
@@ -159,6 +159,8 @@ export function useEasterEgg() {
 
       const ahora = Date.now()
 
+      if (delta > 5) mostrarToast(`delta: ${delta.toFixed(1)}`, 800)
+
       if (delta > UMBRAL) {
         if (ahora - ultimaSacudidaTs > VENTANA_MS) {
           sacudidasFuertes = 0
@@ -177,15 +179,22 @@ export function useEasterEgg() {
       const DeviceMotionEventTyped = DeviceMotionEvent as unknown as {
         requestPermission?: () => Promise<'granted' | 'denied'>
       }
+
+      mostrarToast(`API disponible: ${typeof DeviceMotionEventTyped.requestPermission}`, 3000)
+
       if (typeof DeviceMotionEventTyped.requestPermission === 'function') {
         DeviceMotionEventTyped.requestPermission()
           .then(resultado => {
+            mostrarToast(`Permiso: ${resultado}`, 3000)
             if (resultado === 'granted') {
               window.addEventListener('devicemotion', handleMotion)
             }
           })
-          .catch(() => {})
+          .catch(err => {
+            mostrarToast(`Error: ${err.message || err}`, 4000)
+          })
       } else {
+        mostrarToast('Sin requestPermission, activando directo', 2000)
         window.addEventListener('devicemotion', handleMotion)
       }
       document.removeEventListener('click', activarSensor)
