@@ -94,6 +94,7 @@ function Navbar() {
           onMouseDown={handleLogoPressStart}
           onMouseUp={handleLogoPressEnd}
           onMouseLeave={handleLogoPressEnd}
+          onContextMenu={(e) => e.preventDefault()}
         >
           MOP
         </a>
