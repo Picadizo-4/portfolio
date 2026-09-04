@@ -122,3 +122,15 @@ body.terminal-mode .hero-foto-terminal {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
+
+.hero-foto-comic {
+  display: none;
+}
+
+body.chaos-mode .hero-foto-normal {
+  display: none;
+}
+
+body.chaos-mode .hero-foto-comic {
+  display: block;
+}

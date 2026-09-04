@@ -1,6 +1,7 @@
 import './Hero.css'
 import fotoPerfil from '../assets/foto-hero.jpg'
 import { useLanguage } from '../hooks/useLanguage'
+import fotoComic from '../assets/foto-comic-chaos.png'
 
 function Hero() {
   const { t } = useLanguage()
@@ -18,7 +19,8 @@ function Hero() {
         </div>
       </div>
       <div className="hero-foto-wrapper">
-        <img src={fotoPerfil} alt="Miguel Ángel Ordóñez Picadizo" className="hero-foto" />
+        <img src={fotoPerfil} alt="Miguel Ángel Ordóñez Picadizo" className="hero-foto hero-foto-normal" />
+        <img src={fotoComic} alt="Miguel Ángel Ordóñez Picadizo" className="hero-foto hero-foto-comic" />
         <div className="hero-foto-terminal" aria-hidden="true">&gt;_</div>
       </div>
     </section>

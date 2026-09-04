@@ -3,12 +3,29 @@ import { useTheme } from '../hooks/useTheme'
 import { useLanguage } from '../hooks/useLanguage'
 import './Navbar.css'
 
+
 function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const { lang, toggleLang, t } = useLanguage()
   const [cvOpen, setCvOpen] = useState(false)
   const cvRef = useRef<HTMLDivElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const tapCountRef = useRef(0)
+  const tapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const handleLogoTap = () => {
+    tapCountRef.current += 1
+
+    if (tapTimerRef.current) clearTimeout(tapTimerRef.current)
+    tapTimerRef.current = setTimeout(() => {
+      tapCountRef.current = 0
+    }, 1500)
+
+    if (tapCountRef.current >= 5) {
+      tapCountRef.current = 0
+      document.body.classList.toggle('chaos-mode')
+    }
+  }
 
   const sections = [
     { id: 'sobre-mi', label: t.nav.sobreMi },
@@ -54,7 +71,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-bar">
-        <a href="#hero" className="navbar-logo">MOP</a>
+        <a href="#hero" className="navbar-logo" onClick={handleLogoTap}>MOP</a>
 
         <ul className="navbar-links">
           {sections.map(section => (

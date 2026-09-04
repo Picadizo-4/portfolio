@@ -191,6 +191,7 @@ export const translations = {
         cerrar: 'Cerrar',
       },
       matrixMensaje: 'HAS ENCONTRADO UN EASTER EGG\n\nMIGUEL ANGEL ORDOÑEZ PICADIZO\nSOFTWARE DEVELOPER\n\n\n\nsiga buscando...',
+      color: 'Modo caos activado',
       datosGeo: [
         'El río más largo del mundo, el Nilo, recorre más de 6.600 km.',
         'Rusia abarca 11 husos horarios distintos.',
@@ -432,6 +433,7 @@ export const translations = {
         cerrar: 'Close',
       },
       matrixMensaje: 'YOU FOUND AN EASTER EGG\n\nMIGUEL ANGEL ORDOÑEZ PICADIZO\nSOFTWARE DEVELOPER\n\n\n\nkeep looking...',
+      color: 'Chaos mode activated',
       datosGeo: [
         'The world\'s longest river, the Nile, runs over 6,600 km.',
         'Russia spans 11 different time zones.',

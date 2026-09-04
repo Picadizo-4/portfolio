@@ -71,3 +71,19 @@ body.custom-cursor-active * {
 body.glitch-active {
   animation: glitch-shake 0.7s steps(2, end);
 }
+
+body.chaos-mode {
+  --color-bg: #FFEE32;
+  --color-surface: #FF3EA5;
+  --color-surface-sunken: #00E5FF;
+  --color-text-primary: #1A0033;
+  --color-text-secondary: #723509;
+  --color-border: #7B2FFF;
+  --color-accent-green: #39FF14;
+  --color-accent-blue: #FF3EA5;
+  --color-accent-earth: #FF6B00;
+}
+
+body.chaos-mode * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+}

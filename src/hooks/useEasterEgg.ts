@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from './useLanguage'
 
-const PALABRAS = ['sudo', 'geo', 'cv', 'hire', 'matrix', 'play', 'ayuda', 'theme', 'terminal', 'glitch', 'cursor', 'paises']
+const PALABRAS = ['sudo', 'geo', 'cv', 'hire', 'matrix', 'play', 'ayuda', 'theme', 'terminal', 'glitch', 'cursor', 'paises', 'color']
 const MAX_PALABRA_LEN = Math.max(...PALABRAS.map(p => p.length))
 
 const KONAMI = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a']
@@ -23,6 +23,11 @@ export function useEasterEgg() {
   const mostrarToast = (texto: string, duracion = 3000) => {
     setToast(texto)
     setTimeout(() => setToast(null), duracion)
+  }
+
+  const activarMatrix = () => {
+    setMatrixActivo(true)
+    setTimeout(() => setMatrixActivo(false), 10000)
   }
 
   useEffect(() => {
@@ -75,10 +80,9 @@ export function useEasterEgg() {
               break
             }
             case 'matrix': {
-              setMatrixActivo(true)
-              setTimeout(() => setMatrixActivo(false), 10000)
+              activarMatrix()
               break
-            }
+            }            
             case 'play': {
               setJuegoActivo(true)
               break
@@ -114,6 +118,11 @@ export function useEasterEgg() {
               setGeoQuizActivo(true)
               break
             }
+            case 'color': {
+              document.body.classList.toggle('chaos-mode')
+              mostrarToast(ee.color)
+              break
+            }
           }
           break
         }
@@ -129,6 +138,67 @@ export function useEasterEgg() {
     localStorage.setItem('visitCount', String(visitas))
     if (visitas > 1) {
       setTimeout(() => mostrarToast(tRef.current.easterEggs.visita(visitas), 4000), 1200)
+    }
+  }, [])
+
+  useEffect(() => {
+    let ultimaX = 0, ultimaY = 0, ultimaZ = 0
+    let sacudidasFuertes = 0
+    let ultimaSacudidaTs = 0
+    const UMBRAL = 18
+    const VENTANA_MS = 2500
+
+    function handleMotion(e: DeviceMotionEvent) {
+      const acc = e.accelerationIncludingGravity
+      if (!acc || acc.x === null || acc.y === null || acc.z === null) return
+
+      const delta = Math.abs(acc.x - ultimaX) + Math.abs(acc.y - ultimaY) + Math.abs(acc.z - ultimaZ)
+      ultimaX = acc.x
+      ultimaY = acc.y
+      ultimaZ = acc.z
+
+      const ahora = Date.now()
+
+      if (delta > UMBRAL) {
+        if (ahora - ultimaSacudidaTs > VENTANA_MS) {
+          sacudidasFuertes = 0
+        }
+        sacudidasFuertes++
+        ultimaSacudidaTs = ahora
+
+        if (sacudidasFuertes >= 3) {
+          sacudidasFuertes = 0
+          activarMatrix()
+        }
+      }
+    }
+
+    function activarSensor() {
+      const DeviceMotionEventTyped = DeviceMotionEvent as unknown as {
+        requestPermission?: () => Promise<'granted' | 'denied'>
+      }
+      if (typeof DeviceMotionEventTyped.requestPermission === 'function') {
+        DeviceMotionEventTyped.requestPermission()
+          .then(resultado => {
+            if (resultado === 'granted') {
+              window.addEventListener('devicemotion', handleMotion)
+            }
+          })
+          .catch(() => {})
+      } else {
+        window.addEventListener('devicemotion', handleMotion)
+      }
+      document.removeEventListener('click', activarSensor)
+      document.removeEventListener('touchstart', activarSensor)
+    }
+
+    document.addEventListener('click', activarSensor)
+    document.addEventListener('touchstart', activarSensor)
+
+    return () => {
+      document.removeEventListener('click', activarSensor)
+      document.removeEventListener('touchstart', activarSensor)
+      window.removeEventListener('devicemotion', handleMotion)
     }
   }, [])
 
