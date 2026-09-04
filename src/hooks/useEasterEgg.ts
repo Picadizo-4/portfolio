@@ -142,73 +142,11 @@ export function useEasterEgg() {
   }, [])
 
   useEffect(() => {
-    let ultimaX = 0, ultimaY = 0, ultimaZ = 0
-    let sacudidasFuertes = 0
-    let ultimaSacudidaTs = 0
-    const UMBRAL = 18
-    const VENTANA_MS = 2500
-
-    function handleMotion(e: DeviceMotionEvent) {
-      const acc = e.accelerationIncludingGravity
-      if (!acc || acc.x === null || acc.y === null || acc.z === null) return
-
-      const delta = Math.abs(acc.x - ultimaX) + Math.abs(acc.y - ultimaY) + Math.abs(acc.z - ultimaZ)
-      ultimaX = acc.x
-      ultimaY = acc.y
-      ultimaZ = acc.z
-
-      const ahora = Date.now()
-
-      if (delta > 5) mostrarToast(`delta: ${delta.toFixed(1)}`, 800)
-
-      if (delta > UMBRAL) {
-        if (ahora - ultimaSacudidaTs > VENTANA_MS) {
-          sacudidasFuertes = 0
-        }
-        sacudidasFuertes++
-        ultimaSacudidaTs = ahora
-
-        if (sacudidasFuertes >= 3) {
-          sacudidasFuertes = 0
-          activarMatrix()
-        }
-      }
+    function handleActivarMatrix() {
+      activarMatrix()
     }
-
-    function activarSensor() {
-      const DeviceMotionEventTyped = DeviceMotionEvent as unknown as {
-        requestPermission?: () => Promise<'granted' | 'denied'>
-      }
-
-      mostrarToast(`API disponible: ${typeof DeviceMotionEventTyped.requestPermission}`, 3000)
-
-      if (typeof DeviceMotionEventTyped.requestPermission === 'function') {
-        DeviceMotionEventTyped.requestPermission()
-          .then(resultado => {
-            mostrarToast(`Permiso: ${resultado}`, 3000)
-            if (resultado === 'granted') {
-              window.addEventListener('devicemotion', handleMotion)
-            }
-          })
-          .catch(err => {
-            mostrarToast(`Error: ${err.message || err}`, 4000)
-          })
-      } else {
-        mostrarToast('Sin requestPermission, activando directo', 2000)
-        window.addEventListener('devicemotion', handleMotion)
-      }
-      document.removeEventListener('click', activarSensor)
-      document.removeEventListener('touchstart', activarSensor)
-    }
-
-    document.addEventListener('click', activarSensor)
-    document.addEventListener('touchstart', activarSensor)
-
-    return () => {
-      document.removeEventListener('click', activarSensor)
-      document.removeEventListener('touchstart', activarSensor)
-      window.removeEventListener('devicemotion', handleMotion)
-    }
+    window.addEventListener('activar-matrix', handleActivarMatrix)
+    return () => window.removeEventListener('activar-matrix', handleActivarMatrix)
   }, [])
 
   return {
@@ -222,5 +160,6 @@ export function useEasterEgg() {
     cursorActivo,
     geoQuizActivo,
     setGeoQuizActivo,
+    activarMatrix,
   }
 }

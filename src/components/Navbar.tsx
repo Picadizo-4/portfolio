@@ -12,6 +12,7 @@ function Navbar() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const tapCountRef = useRef(0)
   const tapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleLogoTap = () => {
     tapCountRef.current += 1
@@ -24,6 +25,19 @@ function Navbar() {
     if (tapCountRef.current >= 5) {
       tapCountRef.current = 0
       document.body.classList.toggle('chaos-mode')
+    }
+  }
+
+  const handleLogoPressStart = () => {
+    pressTimerRef.current = setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('activar-matrix'))
+    }, 1200)
+  }
+
+  const handleLogoPressEnd = () => {
+    if (pressTimerRef.current) {
+      clearTimeout(pressTimerRef.current)
+      pressTimerRef.current = null
     }
   }
 
@@ -71,7 +85,18 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-bar">
-        <a href="#hero" className="navbar-logo" onClick={handleLogoTap}>MOP</a>
+        <a
+          href="#hero"
+          className="navbar-logo"
+          onClick={handleLogoTap}
+          onTouchStart={handleLogoPressStart}
+          onTouchEnd={handleLogoPressEnd}
+          onMouseDown={handleLogoPressStart}
+          onMouseUp={handleLogoPressEnd}
+          onMouseLeave={handleLogoPressEnd}
+        >
+          MOP
+        </a>
 
         <ul className="navbar-links">
           {sections.map(section => (
