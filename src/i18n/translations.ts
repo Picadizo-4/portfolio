@@ -9,6 +9,8 @@ export const translations = {
       formacion: 'Formación',
       proyectos: 'Proyectos',
       contacto: 'Contacto',
+      temaOscuro: 'Cambiar a modo oscuro',
+      temaClaro: 'Cambiar a modo claro',
     },
     hero: {
       eyebrow: 'Disponible para trabajar',
@@ -20,8 +22,8 @@ export const translations = {
     sobreMi: {
       eyebrow: '01 — sobre_mi.ts',
       titulo: 'Sobre mí',
-      p1: 'Soy un desarrollador de software con un enfoque muy práctico y orientado a resolver problemas. Mi camino hasta la programación no ha sido el típico: antes de escribir código estudié finanzas, trabajé en administración e incluso estuve en Alemania gestionando operativa logística y optimizando rutas de reparto para Deutsche Post y DHL. Toda esa etapa me enseñó a buscarme la vida, a mantener la calma bajo presión y a entender que con constancia se saca cualquier problema adelante. Hoy aplico esa misma disciplina cuando me siento a programar.',
-      p2: 'Me gusta centrarme en lo verdaderamente importante y crear herramientas que resuelvan problemas reales. Mi objetivo ahora es unirme a un equipo que desarrolle proyectos grandes y exigentes, donde pueda seguir aprendiendo y aportar creando software que sea verdaderamente útil.',
+      p1: 'Me considero una persona curiosa, de las que se hacen preguntas y no descansan hasta encontrarles respuesta — así que cuando decidí meterme de lleno en programación, una de las cosas que más me apasionó fue ir descubriendo cómo funcionan las cosas por dentro de verdad. Antes de eso pasé por finanzas y contabilidad, trabajé en administración, y viví una temporada en Alemania que acabé alargando por decisión propia — una experiencia que me enseñó a adaptarme rápido y a resolver problemas sin que nadie me diera la solución hecha.',
+      p2: 'Mi terreno natural es el backend: me gusta construir el motor de las cosas, la lógica que sostiene todo lo demás — al final, levantar una aplicación requiere el mismo orden y precisión que cualquier otro problema que merezca la pena resolver bien. Pero disfruto igual con el resto de stacks: este mismo portfolio es prueba de que también me tomo en serio el diseño y la experiencia visual. Sigo profundizando cada día, sin cerrarme puertas — ahora mismo con Python, y con curiosidad por seguir explorando terrenos como la ciberseguridad más adelante. Busco un equipo donde meterme en proyectos grandes de verdad, con gente de la que aprender, y seguir construyendo software que funcione bien — no solo que se vea bien.',
     },
     skills: {
       eyebrow: '02 — skills.map()',
@@ -57,7 +59,7 @@ export const translations = {
           description: 'Cómo organizo y estructuro el código para que escale bien.',
           skills: [
             { id: 'mvvm', name: 'MVVM', desc: 'Patrón que separa interfaz, lógica y datos para un código más mantenible.' },
-            { id: 'logica-asincrona', name: 'Lógica asíncrona', desc: 'Manejo de tareas que se ejecutan sin bloquear el resto de la aplicación.' },
+            { id: 'async-logic', name: 'Lógica asíncrona', desc: 'Manejo de tareas que se ejecutan sin bloquear el resto de la aplicación.' },
             { id: 'poo', name: 'POO', desc: 'Programación orientada a objetos — organizar el código en clases y objetos que modelan el dominio del problema.' },
           ],
         },
@@ -69,7 +71,7 @@ export const translations = {
             { id: 'nosql', name: 'NoSQL', desc: 'Bases de datos no relacionales, flexibles para datos poco estructurados.' },
             { id: 'json', name: 'JSON', desc: 'Formato estándar para intercambiar datos entre sistemas.' },
             { id: 'svg', name: 'SVG', desc: 'Formato de gráficos vectoriales, usado en PanGeo para los mapas interactivos.' },
-            { id: 'bases-de-datos', name: 'Bases de datos', desc: 'Diseño y gestión de almacenamiento de datos, relacional y no relacional.' },
+            { id: 'databases', name: 'Bases de datos', desc: 'Diseño y gestión de almacenamiento de datos, relacional y no relacional.' },
           ],
         },
         {
@@ -113,7 +115,7 @@ export const translations = {
         sub: 'Administración y Finanzas',
       },
       ticker: {
-        completado: 'Grado completado',
+        completado: '2 años cursados',
       },
       items: [
         { titulo: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma', centro: 'Universidad Europea, Madrid', periodo: '2024 — 2026' },
@@ -124,6 +126,8 @@ export const translations = {
     proyectos: {
       eyebrow: '05 — projects.list()',
       titulo: 'Proyectos',
+      verMas: '+ Ver más',
+      verMenos: '− Ver menos',
       items: [
         {
           nombre: 'PanGeo — App',
@@ -132,6 +136,7 @@ export const translations = {
           stack: ['Kotlin', 'Jetpack Compose', 'MVVM', 'Firebase'],
           enlace: 'https://github.com/Picadizo-4/PanGeo',
           enlaceLabel: 'Ver en GitHub',
+          reto: 'El mayor reto fue enfrentarme a la arquitectura y la UI/UX de una app nativa Android desde cero: interacción táctil directa sobre mapas vectoriales (SVG), integrando modos de juego y un sistema de experiencia y rankings. El MVP ya cubre el mapa de Europa — soy consciente de lo mucho que queda por pulir en arquitectura y UI/UX, y ese es precisamente el siguiente paso.',
         },
         {
           nombre: 'PanGeo — Web',
@@ -140,6 +145,7 @@ export const translations = {
           stack: ['Odoo'],
           enlace: 'https://pangeo.odoo.com/',
           enlaceLabel: 'Visitar web',
+          reto: 'Empezó como un blog de artículos y curiosidades sobre geografía. El objetivo a futuro es convertirlo en una sala de mapas con minijuegos interactivos, ampliando el proyecto más allá del contenido escrito.',
         },
         {
           nombre: 'PanTypeo',
@@ -148,6 +154,7 @@ export const translations = {
           stack: ['Python', 'PyQt6', 'PyInstaller'],
           enlace: 'https://github.com/Picadizo-4/Pantypeo',
           enlaceLabel: 'Ver en GitHub',
+          reto: 'Quería forzarme a implementar una arquitectura MVVM estricta en Python. El verdadero reto fue separar por completo la interfaz gráfica (PyQt6) de toda la lógica que calcula y muestra pulsaciones y penalizaciones en tiempo real, manteniendo la app fluida. De paso, me metí de lleno en la distribución de software: rutas relativas, type safety con Enums, y empaquetado con PyInstaller.',
         },
       ],
     },
@@ -184,6 +191,7 @@ export const translations = {
         whoami: 'Miguel Ángel Ordóñez Picadizo — desarrollador de software junior, apasionado por la geografía.',
         ls: 'sobre-mi  skills  trayectoria  formacion  proyectos  contacto',
         cv: 'Descargando CV...',
+        cerrar: 'Cerrar',
       },
       geoquiz: {
         pais: 'País',
@@ -251,6 +259,8 @@ export const translations = {
       formacion: 'Education',
       proyectos: 'Projects',
       contacto: 'Contact',
+      temaOscuro: 'Switch to dark mode',
+      temaClaro: 'Switch to light mode',
     },
     hero: {
       eyebrow: 'Available for work',
@@ -262,8 +272,8 @@ export const translations = {
     sobreMi: {
       eyebrow: '01 — about_me.ts',
       titulo: 'About me',
-      p1: 'I\'m a software developer with a very practical, problem-solving-oriented approach. My path into programming wasn\'t the typical one: before writing code I studied finance, worked in administration, and even spent time in Germany managing logistics operations and optimizing delivery routes for Deutsche Post and DHL. That whole stage taught me to figure things out on my own, stay calm under pressure, and understand that with persistence any problem can be solved. Today I apply that same discipline when I sit down to code.',
-      p2: 'I like to focus on what truly matters and build tools that solve real problems. My goal right now is to join a team working on large, demanding projects, where I can keep learning and contribute by building software that\'s genuinely useful.',
+      p1: 'I consider myself a curious person, the kind who asks questions and doesn\'t rest until finding an answer — so when I decided to fully commit to programming, one of the things I loved most was discovering how things really work underneath. Before that I went through finance and accounting, worked in administration, and spent time in Germany that I ended up extending by my own choice — an experience that taught me to adapt fast and solve problems without anyone handing me the answer.',
+      p2: 'My natural ground is backend: I like building the engine of things, the logic that holds everything else up — building an application, in the end, takes the same order and precision as any other problem worth solving properly. But I enjoy the rest of the stack just as much — this very portfolio is proof that I take design and visual experience seriously too. I keep learning every day without closing any doors — right now with Python, and curious to explore areas like cybersecurity further down the road. I\'m looking for a team to take on real, substantial projects, work alongside people I can learn from, and keep building software that actually works well — not just looks good.',
     },
     skills: {
       eyebrow: '02 — skills.map()',
@@ -355,7 +365,7 @@ export const translations = {
         sub: 'Business Administration and Finance',
       },
       ticker: {
-        completado: 'Degree completed',
+        completado: '2 years completed',
       },
       items: [
         { titulo: 'Higher Technician in Multiplatform Application Development', centro: 'Universidad Europea, Madrid', periodo: '2024 — 2026' },
@@ -366,6 +376,8 @@ export const translations = {
     proyectos: {
       eyebrow: '05 — projects.list()',
       titulo: 'Projects',
+      verMas: '+ View more',
+      verMenos: '− View less',
       items: [
         {
           nombre: 'PanGeo — App',
@@ -374,6 +386,7 @@ export const translations = {
           stack: ['Kotlin', 'Jetpack Compose', 'MVVM', 'Firebase'],
           enlace: 'https://github.com/Picadizo-4/PanGeo',
           enlaceLabel: 'View on GitHub',
+          reto: 'The biggest challenge was tackling the architecture and UI/UX of a native Android app from scratch: direct touch interaction on vector maps (SVG), integrating game modes and an XP/ranking system. The MVP already covers the map of Europe — I\'m well aware of how much there is to refine in architecture and UI/UX, and that\'s exactly the next step.',
         },
         {
           nombre: 'PanGeo — Web',
@@ -382,6 +395,7 @@ export const translations = {
           stack: ['Odoo'],
           enlace: 'https://pangeo.odoo.com/',
           enlaceLabel: 'Visit site',
+          reto: 'It started as a blog of articles and trivia about geography. The future goal is to turn it into a map room with interactive mini-games, expanding the project beyond written content.',
         },
         {
           nombre: 'PanTypeo',
@@ -390,6 +404,7 @@ export const translations = {
           stack: ['Python', 'PyQt6', 'PyInstaller'],
           enlace: 'https://github.com/Picadizo-4/Pantypeo',
           enlaceLabel: 'View on GitHub',
+          reto: 'I wanted to push myself to implement a strict MVVM architecture in Python. The real challenge was fully separating the GUI (PyQt6) from all the logic that calculates and displays keystrokes and penalties in real time, while keeping the app smooth. Along the way, I dove into software distribution: relative paths, type safety with Enums, and packaging with PyInstaller.',
         },
       ],
     },
@@ -426,6 +441,7 @@ export const translations = {
         whoami: 'Miguel Ángel Ordóñez Picadizo — junior software developer, passionate about geography.',
         ls: 'about  skills  experience  education  projects  contact',
         cv: 'Downloading CV...',
+        cerrar: 'Close',
       },
       geoquiz: {
         pais: 'Country',

@@ -79,7 +79,7 @@ function TerminalOverlay({ onClose }: TerminalOverlayProps) {
       <div className="terminal-window" onClick={e => e.stopPropagation()}>
         <div className="terminal-header">
           <span>miguel@portfolio: ~</span>
-          <button className="terminal-close" onClick={onClose} aria-label="Cerrar">×</button>
+          <button className="terminal-close" onClick={onClose} aria-label={t.easterEggs.terminal.cerrar}>×</button>
         </div>
         <div className="terminal-body">
           {lineas.map((linea, i) => (

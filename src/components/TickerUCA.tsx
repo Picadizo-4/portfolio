@@ -28,7 +28,7 @@ function TickerUCA() {
   }, [])
 
   return (
-    <div className={`formacion-ticker ${fase === 'saliendo' ? 'formacion-ticker-salir' : ''}`}>
+    <div className={`formacion-ticker-overlay ${fase === 'saliendo' ? 'formacion-ticker-hide' : ''}`}>
       <span className="formacion-ticker-nombre">UCA</span>
       <span className="formacion-ticker-precio">{precio.toFixed(2)}</span>
       <span className="formacion-ticker-flecha">

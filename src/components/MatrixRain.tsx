@@ -43,17 +43,22 @@ function MatrixRain({ mensaje = 'HAS ENCONTRADO UN EASTER EGG\n\nMIGUEL ANGEL OR
     // Espera a que la lluvia llene la pantalla una vez, y entonces empieza a escribir el nombre
     const tiempoLluviaInicial = filas * 40
     let indice = 0
+    let escrituraInterval: ReturnType<typeof setInterval> | null = null
+
     const timeoutInicio = setTimeout(() => {
-      const escritura = setInterval(() => {
+      escrituraInterval = setInterval(() => {
         indice++
         setTextoVisible(mensaje.slice(0, indice))
-        if (indice >= mensaje.length) clearInterval(escritura)
+        if (indice >= mensaje.length && escrituraInterval) {
+          clearInterval(escrituraInterval)
+        }
       }, 60)
     }, tiempoLluviaInicial)
 
     return () => {
       clearInterval(interval)
       clearTimeout(timeoutInicio)
+      if (escrituraInterval) clearInterval(escrituraInterval)
     }
   }, [mensaje])
 

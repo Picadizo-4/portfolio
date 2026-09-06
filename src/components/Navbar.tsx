@@ -126,7 +126,11 @@ function Navbar() {
           <button className="navbar-button" onClick={toggleLang}>
             {lang === 'es' ? 'EN' : 'ES'}
           </button>
-          <button className="navbar-button" onClick={toggleTheme}>
+          <button
+            className="navbar-button"
+            onClick={toggleTheme}
+            aria-label={theme === 'light' ? t.nav.temaOscuro : t.nav.temaClaro}
+          >
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
         </div>

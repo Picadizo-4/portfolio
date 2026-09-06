@@ -62,7 +62,7 @@ function ExerciseModal({ skillName, ejercicios, onClose }: ExerciseModalProps) {
       <div className="exercise-modal" onClick={e => e.stopPropagation()}>
         <div className="exercise-header">
           <span className="exercise-title">{m.ejercicio} · {skillName}</span>
-          <button className="exercise-close" onClick={onClose} aria-label="Cerrar">×</button>
+          <button className="exercise-close" onClick={onClose} aria-label={m.cerrar}>×</button>
         </div>
 
         <div className="exercise-progress">

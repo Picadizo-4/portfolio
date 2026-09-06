@@ -73,7 +73,7 @@ function GeoQuiz({ onClose }: GeoQuizProps) {
       <div className="geoquiz-window" onClick={e => e.stopPropagation()}>
         <div className="geoquiz-header">
           <span>{t.easterEggs.geoquiz.pais} {indice + 1} / {preguntas.length}</span>
-          <button className="geoquiz-close" onClick={onClose} aria-label="Cerrar">×</button>
+          <button className="geoquiz-close" onClick={onClose} aria-label={t.easterEggs.geoquiz.cerrar}>×</button>
         </div>
 
         <img src={actual.bandera} alt="" className="geoquiz-bandera" />

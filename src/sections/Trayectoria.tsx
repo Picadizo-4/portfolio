@@ -1,16 +1,24 @@
 import { useState } from 'react'
 import './Trayectoria.css'
 import furgonetaImg from '../assets/furgoneta-dhl.png'
+import ConfettiWordPress from '../components/ConfettiWordPress'
 import { useLanguage } from '../hooks/useLanguage'
 
 function Trayectoria() {
   const { t } = useLanguage()
   const [furgonetaActiva, setFurgonetaActiva] = useState(false)
+  const [confettiActivo, setConfettiActivo] = useState(false)
 
   const lanzarFurgoneta = () => {
     if (furgonetaActiva) return
     setFurgonetaActiva(true)
     setTimeout(() => setFurgonetaActiva(false), 2500)
+  }
+
+  const lanzarConfetti = () => {
+    if (confettiActivo) return
+    setConfettiActivo(true)
+    setTimeout(() => setConfettiActivo(false), 4500)
   }
 
   return (
@@ -21,11 +29,15 @@ function Trayectoria() {
       <div className="trayectoria-list">
         {t.trayectoria.items.map(exp => {
           const esDHL = exp.empresa === 'Deutsche Post / DHL'
+          const esSweetCode = exp.empresa === 'SweetCode'
+          const clicable = esDHL || esSweetCode
+          const handler = esDHL ? lanzarFurgoneta : esSweetCode ? lanzarConfetti : undefined
+
           return (
             <div
               key={exp.empresa}
-              className={`trayectoria-item ${esDHL ? 'trayectoria-clickable' : ''}`}
-              onClick={esDHL ? lanzarFurgoneta : undefined}
+              className={`trayectoria-item ${clicable ? 'trayectoria-clickable' : ''}`}
+              onClick={handler}
             >
               <p className="trayectoria-periodo">{exp.periodo}</p>
               <div className="trayectoria-content">
@@ -45,6 +57,8 @@ function Trayectoria() {
           )
         })}
       </div>
+
+      {confettiActivo && <ConfettiWordPress />}
     </section>
   )
 }

@@ -131,4 +131,8 @@
   .navbar-links {
     display: none;
   }
+
+  .navbar-progress-track {
+    width: 93%;
+  }
 }

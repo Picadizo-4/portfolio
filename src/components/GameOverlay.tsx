@@ -151,7 +151,7 @@ function GameOverlay({ onClose }: GameOverlayProps) {
       {estado === 'jugando' && (
         <>
           <canvas ref={canvasRef} className="game-canvas" />
-          <button className="game-close" onClick={onClose} aria-label="Cerrar">×</button>
+          <button className="game-close" onClick={onClose} aria-label={t.easterEggs.juego.cerrar}>×</button>
           <p className="game-instrucciones">{t.easterEggs.juego.instrucciones}</p>
         </>
       )}

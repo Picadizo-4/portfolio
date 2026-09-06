@@ -59,3 +59,42 @@
 .proyecto-link:hover {
   text-decoration: underline;
 }
+
+.proyecto-expandido {
+  margin-bottom: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.proyecto-video {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: #000;
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+.proyecto-reto {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.proyecto-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.proyecto-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-accent-blue);
+  cursor: pointer;
+}
