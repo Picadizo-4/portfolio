@@ -103,7 +103,7 @@
 .formacion-levelup-fill {
   position: absolute;
   inset: 0;
-  background-color: var(--color-accent-green);
+  background-color: #3aac56;
   width: 5%;
   transition: width 2.2s linear;
 }
