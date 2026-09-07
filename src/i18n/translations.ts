@@ -175,6 +175,9 @@ export const translations = {
       hire: '¡Hablamos! Te llevo a contacto',
       theme: 'Modo terminal alternado',
       cursor: 'Cursor personalizado alternado',
+      hola: '¡Hola! Soy Miguel (bueno, técnicamente el código de Miguel) 👋',
+      adios: '¡Hasta la próxima! Gracias por curiosear por aquí',
+      gracias: '¡De nada! Sigue explorando, hay más por descubrir',
       visita: (n: number) => `Esta es tu visita nº ${n}`,
       juego: {
         instrucciones: '← → o A / D para moverte',
@@ -425,6 +428,9 @@ export const translations = {
       hire: 'Let\'s talk! Taking you to contact',
       theme: 'Terminal mode toggled',
       cursor: 'Custom cursor toggled',
+      hola: 'Hi there! I\'m Miguel (well, technically Miguel\'s code) 👋',
+      adios: 'See you next time! Thanks for poking around',
+      gracias: 'You\'re welcome! Keep exploring, there\'s more to find',
       visita: (n: number) => `This is your visit #${n}`,
       juego: {
         instrucciones: '← → or A / D to move',

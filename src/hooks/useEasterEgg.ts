@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from './useLanguage'
 
-const PALABRAS = ['sudo', 'geo', 'cv', 'hire', 'matrix', 'play', 'ayuda', 'theme', 'terminal', 'glitch', 'cursor', 'paises', 'color']
+const PALABRAS = [
+  'sudo', 'geo', 'cv', 'hire', 'matrix', 'play', 'ayuda', 'theme',
+  'terminal', 'glitch', 'cursor', 'paises', 'color',
+  'hola', 'hello', 'adios', 'bye', 'gracias', 'thanks',
+]
 const MAX_PALABRA_LEN = Math.max(...PALABRAS.map(p => p.length))
 
 const KONAMI = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a']
@@ -121,6 +125,21 @@ export function useEasterEgg() {
             case 'color': {
               document.body.classList.toggle('chaos-mode')
               mostrarToast(ee.color)
+              break
+            }
+            case 'hola':
+            case 'hello': {
+              mostrarToast(ee.hola)
+              break
+            }
+            case 'adios':
+            case 'bye': {
+              mostrarToast(ee.adios)
+              break
+            }
+            case 'gracias':
+            case 'thanks': {
+              mostrarToast(ee.gracias)
               break
             }
           }
