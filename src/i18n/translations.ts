@@ -13,7 +13,7 @@ export const translations = {
       temaClaro: 'Cambiar a modo claro',
     },
     hero: {
-      eyebrow: 'Disponible para trabajar',
+      eyebrow: 'Software Developer',
       subtitle: 'Construyo software, aprendizaje constante y ganas de crecer.',
       description: 'Desarrollador junior con experiencia en proyectos personales.',
       verProyectos: 'Ver proyectos →',
@@ -266,7 +266,7 @@ export const translations = {
       temaClaro: 'Switch to light mode',
     },
     hero: {
-      eyebrow: 'Available for work',
+      eyebrow: 'Software Developer',
       subtitle: 'I build software, constant learning and a drive to grow.',
       description: 'Junior developer with experience in personal projects.',
       verProyectos: 'View projects →',
